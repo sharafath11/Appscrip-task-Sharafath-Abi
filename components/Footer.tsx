@@ -60,14 +60,14 @@ function PaymentIcons() {
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="site-footer__top">
-        <section className="site-footer__newsletter" aria-labelledby="newsletter-heading">
+      <div className="site-footer_top">
+        <section className="site-footer_newsletter" aria-labelledby="newsletter-heading">
           <h2 id="newsletter-heading">BE THE FIRST TO KNOW</h2>
           <p>Sign up for updates from metta muse.</p>
           <Newsletter />
         </section>
 
-        <div className="site-footer__contact">
+        <div className="site-footer_contact">
           <section aria-labelledby="contact-heading">
             <h2 id="contact-heading">CONTACT US</h2>
             <p>+44 221 133 5360</p>
@@ -76,8 +76,8 @@ export function Footer() {
 
           <section aria-labelledby="currency-heading">
             <h2 id="currency-heading">CURRENCY</h2>
-            <p className="site-footer__currency">🇺🇸 USD</p>
-            <p className="site-footer__note">
+            <p className="site-footer_currency">🇺🇸 USD</p>
+            <p className="site-footer_note">
               Transactions will be completed in Euros and a currency reference is
               available on hover.
             </p>
@@ -85,26 +85,26 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="site-footer__divider" />
+      <div className="site-footer_divider" />
 
-      <div className="site-footer__bottom">
+      <div className="site-footer_bottom">
         <details className="footer-section">
           <summary>metta muse</summary>
-          <div className="footer-section__content">
+          <div className="footer-section_content">
             <FooterLinks items={METTA_MUSE_LINKS} />
           </div>
         </details>
 
         <details className="footer-section">
           <summary>QUICK LINKS</summary>
-          <div className="footer-section__content">
+          <div className="footer-section_content">
             <FooterLinks items={QUICK_LINKS} />
           </div>
         </details>
 
         <details className="footer-section footer-section--social">
           <summary>FOLLOW US</summary>
-          <div className="footer-section__content">
+          <div className="footer-section_content">
             <SocialIcons />
             <h3>metta muse ACCEPTS</h3>
             <PaymentIcons />
@@ -112,7 +112,7 @@ export function Footer() {
         </details>
       </div>
 
-      <p className="site-footer__copyright">
+      <p className="site-footer_copyright">
         Copyright © 2023 mettamuse. All rights reserved.
       </p>
     </footer>

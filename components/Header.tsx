@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 
 function MenuIcon() {
@@ -43,25 +44,16 @@ function ProfileIcon() {
   );
 }
 
-function BrandMark() {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <rect x="1" y="1" width="30" height="30" rx="6" />
-      <path d="M8 8l16 16M24 8 8 24M16 4v24M4 16h24" />
-    </svg>
-  );
-}
-
 export function Header() {
   return (
     <header className="site-header">
-      <div className="site-header__ticker" aria-hidden="true">
+      <div className="site-header_ticker" aria-hidden="true">
         <span>Lorem ipsum dolor</span>
         <span>Lorem ipsum dolor</span>
         <span>Lorem ipsum dolor</span>
       </div>
 
-      <div className="site-header__top">
+      <div className="site-header_top">
         <button
           className="icon-button icon-button--menu"
           type="button"
@@ -70,15 +62,21 @@ export function Header() {
           <MenuIcon />
         </button>
 
-        <a className="site-header__brand-mark" href="/plp" aria-label="metta muse home">
-          <BrandMark />
+        <a className="site-header_brand-mark" href="/plp" aria-label="metta muse home">
+          <Image
+            src="/brand-mark.svg"
+            alt="metta muse brand mark"
+            width={32}
+            height={32}
+            priority
+          />
         </a>
 
-        <a className="site-header__logo" href="/plp" aria-label="metta muse product listing">
+        <a className="site-header_logo" href="/plp" aria-label="metta muse product listing">
           LOGO
         </a>
 
-        <div className="site-header__actions" aria-label="Store actions">
+        <div className="site-header_actions" aria-label="Store actions">
           <button className="icon-button" type="button" aria-label="Search">
             <SearchIcon />
           </button>

@@ -43,20 +43,20 @@ export function PLPClient({ products }: PLPClientProps) {
 
   return (
     <div className="plp" id="main-content">
-      <section className="plp__hero" aria-labelledby="plp-title">
-        <p className="plp__eyebrow">HOME / SHOP</p>
+      <section className="plp_hero" aria-labelledby="plp-title">
+        <p className="plp_eyebrow">HOME / SHOP</p>
         <h1 id="plp-title">DISCOVER OUR PRODUCTS</h1>
-        <p className="plp__description">
+        <p className="plp_description">
           Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus
           scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor.
         </p>
       </section>
 
-      <section className="plp__toolbar" aria-label="Product listing tools">
-        <div className="plp__toolbar-left">
+      <section className="plp_toolbar" aria-label="Product listing tools">
+        <div className="plp_toolbar-left">
           <strong>{products.length} ITEMS</strong>
           <button
-            className="plp__filter-toggle"
+            className="plp_filter-toggle"
             type="button"
             aria-expanded={isFilterVisible}
             onClick={() => setIsFilterVisible((current) => !current)}
@@ -76,12 +76,12 @@ export function PLPClient({ products }: PLPClientProps) {
         />
       </section>
 
-      <div className="plp__content">
+      <div className="plp_content">
         <FiltersSidebar
           isOpen={isFilterVisible}
           onClose={() => setIsFilterVisible(false)}
         />
-        <div className="plp__products">
+        <div className="plp_products">
           <ProductGrid products={sortedProducts} />
         </div>
       </div>

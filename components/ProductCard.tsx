@@ -11,14 +11,14 @@ type ProductCardProps = {
 export function ProductCard({ product, priority = false }: ProductCardProps) {
   return (
     <article className="product-card" id={`product-${product.id}`}>
-      <div className="product-card__media">
-        {product.isNew ? <span className="product-card__badge">NEW PRODUCT</span> : null}
+      <div className="product-card_media">
+        {product.isNew ? <span className="product-card_badge">NEW PRODUCT</span> : null}
         {product.isOutOfStock ? (
-          <span className="product-card__stock">OUT OF STOCK</span>
+          <span className="product-card_stock">OUT OF STOCK</span>
         ) : null}
 
         <Image
-          className="product-card__image"
+          className="product-card_image"
           src={product.image}
           alt={product.alt}
           fill
@@ -27,13 +27,13 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         />
       </div>
 
-      <div className="product-card__body">
-        <h3 className="product-card__title">{product.title}</h3>
-        <div className="product-card__meta">
-          <p className="product-card__pricing">
+      <div className="product-card_body">
+        <h3 className="product-card_title">{product.title}</h3>
+        <div className="product-card_meta">
+          <p className="product-card_pricing">
             <a href="#sign-in">Sign in</a> or Create an account to see pricing
           </p>
-          <button className="product-card__wishlist" type="button" aria-label="Add to wishlist">
+          <button className="product-card_wishlist" type="button" aria-label="Add to wishlist">
             <span aria-hidden="true">♡</span>
           </button>
         </div>

@@ -33,7 +33,7 @@ export function SortDropdown({
   return (
     <div className="sort-dropdown">
       <button
-        className="sort-dropdown__trigger"
+        className="sort-dropdown_trigger"
         type="button"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -44,11 +44,11 @@ export function SortDropdown({
       </button>
 
       {isOpen ? (
-        <ul className="sort-dropdown__menu" role="listbox" aria-label="Sort products">
+        <ul className="sort-dropdown_menu" role="listbox" aria-label="Sort products">
           {SORT_OPTIONS.map((option) => (
             <li key={option.value}>
               <button
-                className={`sort-dropdown__option${
+                className={`sort-dropdown_option${
                   option.value === value ? " is-selected" : ""
                 }`}
                 type="button"
@@ -57,7 +57,7 @@ export function SortDropdown({
                 onClick={() => onChange(option.value)}
               >
                 {option.value === value ? (
-                  <span className="sort-dropdown__check" aria-hidden="true">
+                  <span className="sort-dropdown_check" aria-hidden="true">
                     ✓
                   </span>
                 ) : null}

@@ -29,10 +29,10 @@ export function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps) {
         onClick={onClose}
       />
       <aside className={`filters${isOpen ? " is-open" : ""}`} aria-label="Product filters">
-        <div className="filters__header">
-          <p className="filters__drawer-title">Filters</p>
+        <div className="filters_header">
+          <p className="filters_drawer-title">Filters</p>
           <button
-            className="filters__close"
+            className="filters_close"
             type="button"
             onClick={onClose}
             aria-label="Close filters"
@@ -41,27 +41,27 @@ export function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps) {
           </button>
         </div>
 
-        <label className="filters__toggle">
+        <label className="filters_toggle">
           <input type="checkbox" name="customizable" />
           <span>CUSTOMIZABLE</span>
         </label>
 
         {FILTER_SECTIONS.map((section) => (
           <details
-            className="filters__section"
+            className="filters_section"
             key={section.label}
             open={section.open}
           >
             <summary>{section.label}</summary>
             {section.options ? (
-              <div className="filters__content">
-                <p className="filters__all">All</p>
-                <button className="filters__unselect" type="button">
+              <div className="filters_content">
+                <p className="filters_all">All</p>
+                <button className="filters_unselect" type="button">
                   Unselect all
                 </button>
-                <div className="filters__options">
+                <div className="filters_options">
                   {section.options.map((option) => (
-                    <label key={option} className="filters__option">
+                    <label key={option} className="filters_option">
                       <input type="checkbox" />
                       <span>{option}</span>
                     </label>
@@ -69,8 +69,8 @@ export function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps) {
                 </div>
               </div>
             ) : (
-              <div className="filters__content">
-                <p className="filters__all">All</p>
+              <div className="filters_content">
+                <p className="filters_all">All</p>
               </div>
             )}
           </details>
