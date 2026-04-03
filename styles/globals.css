@@ -1,0 +1,79 @@
+@import "./header.css";
+@import "./plp.css";
+@import "./filters.css";
+@import "./product.css";
+@import "./footer.css";
+
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-text: #252020;
+  --color-muted: #888792;
+  --color-border: #e5e5e5;
+  --color-surface: #fdfdfd;
+  --container: 1248px;
+  --transition: 180ms ease;
+  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-heading: "Arial Narrow", "Franklin Gothic Medium", "Helvetica Neue",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-white);
+  color: var(--color-text);
+  font-family: var(--font-body), sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+summary {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+summary {
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

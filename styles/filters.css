@@ -1,0 +1,135 @@
+.filters {
+  min-width: 0;
+}
+
+.filters__header,
+.filters-backdrop {
+  display: none;
+}
+
+.filters__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-heading), sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.filters__section {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filters__section summary {
+  position: relative;
+  padding: 18px 18px 18px 0;
+  font-family: var(--font-heading), sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.filters__section summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: var(--color-muted);
+}
+
+.filters__section[open] summary::after {
+  content: "−";
+}
+
+.filters__content {
+  padding: 0 0 18px;
+}
+
+.filters__all,
+.filters__option {
+  margin: 0;
+  font-size: 15px;
+}
+
+.filters__all {
+  color: #555;
+}
+
+.filters__unselect {
+  margin: 14px 0 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #bfc8cd;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.filters__options {
+  display: grid;
+  gap: 12px;
+}
+
+.filters__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 1024px) {
+  .filters-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+    z-index: 19;
+  }
+
+  .filters-backdrop.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .filters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(82vw, 360px);
+    padding: 20px 20px 40px;
+    overflow-y: auto;
+    background: var(--color-white);
+    transform: translateX(-100%);
+    transition: transform var(--transition);
+    z-index: 20;
+  }
+
+  .filters.is-open {
+    transform: translateX(0);
+  }
+
+  .filters__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .filters__drawer-title {
+    margin: 0;
+    font-family: var(--font-heading), sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .filters__close {
+    border: 0;
+    background: transparent;
+    font-size: 34px;
+    line-height: 1;
+  }
+}
