@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
 const siteName = "Appscrip-task-Sharafath-Abi";
-const siteUrl = "https://appscrip-task-sharafath-abi.netlify.app";
+const fallbackSiteUrl = "https://appscrip-task-sharafath-abi.vercel.app";
+
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || fallbackSiteUrl;
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -24,7 +27,7 @@ export const siteMetadata: Metadata = {
     card: "summary_large_image",
     title: `${siteName} | metta muse`,
     description:
-      "Responsive ecommerce PLP using Next.js App Router and server-rendered FakeStore products.",
+      "Responsive ecommerce PLP using Next.js App Router and server-rendered product data.",
   },
 };
 
@@ -51,8 +54,4 @@ export function buildPageMetadata({
       url: path,
     },
   };
-}
-
-export function getSiteUrl(): string {
-  return siteUrl;
 }

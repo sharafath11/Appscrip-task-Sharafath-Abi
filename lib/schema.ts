@@ -1,9 +1,7 @@
 import type { Product } from "@/lib/api";
-import { getSiteUrl } from "@/lib/seo";
+import { siteUrl } from "@/lib/seo";
 
 export function buildProductListSchema(products: Product[]) {
-  const siteUrl = getSiteUrl();
-
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",

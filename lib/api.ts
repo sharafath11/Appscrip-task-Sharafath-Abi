@@ -16,152 +16,205 @@ export type Product = {
   alt: string;
 };
 
-type FakeStoreProduct = {
+type DummyJsonProduct = {
   id: number;
   title: string;
   price: number;
   description: string;
   category: string;
-  image: string;
-  rating: ProductRating;
+  thumbnail: string;
+  images?: string[];
+  rating: number;
+  stock: number;
 };
 
-const PRODUCTS_ENDPOINT = "https://fakestoreapi.com/products";
+type DummyJsonProductsResponse = {
+  products: DummyJsonProduct[];
+  total: number;
+  skip: number;
+  limit: number;
+};
+
+const defaultProductsApiBase = "https://dummyjson.com";
+const productsApiBase =
+  process.env.NEXT_PUBLIC_PRODUCTS_API_BASE?.replace(/\/$/, "") ||
+  defaultProductsApiBase;
+export const productsEndpoint = `${productsApiBase}/products?limit=20`;
 const FALLBACK_IMAGE = "/product-placeholder.svg";
 
-const FALLBACK_PRODUCTS: FakeStoreProduct[] = [
+const FALLBACK_PRODUCTS: DummyJsonProduct[] = [
   {
     id: 101,
     title: "PPXOC Milkyway Dress In Grey",
     price: 129.99,
-    description: "Structured everyday carry piece with premium texture and minimal form.",
+    description:
+      "Structured everyday carry piece with premium texture and minimal form.",
     category: "bags",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.7, count: 184 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.7,
+    stock: 18,
   },
   {
     id: 102,
     title: "Soft Knit Dino Plush",
-    price: 54.0,
-    description: "Playful hand-knit collectible with a tactile finish and bright accents.",
+    price: 54,
+    description:
+      "Playful hand-knit collectible with a tactile finish and bright accents.",
     category: "toys",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.9, count: 231 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.9,
+    stock: 24,
   },
   {
     id: 103,
     title: "Leather Loop Tag",
-    price: 39.0,
-    description: "Compact accessory with a refined leather loop and polished hardware.",
+    price: 39,
+    description:
+      "Compact accessory with a refined leather loop and polished hardware.",
     category: "accessories",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.5, count: 96 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.5,
+    stock: 9,
   },
   {
     id: 104,
     title: "Cotton Cap",
     price: 42.5,
-    description: "Lightweight cap finished with soft embroidery and an easy everyday fit.",
+    description:
+      "Lightweight cap finished with soft embroidery and an easy everyday fit.",
     category: "caps",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.4, count: 88 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.4,
+    stock: 15,
   },
   {
     id: 105,
     title: "Rolltop Backpack",
-    price: 158.0,
-    description: "Utility-inspired backpack designed with folded closure and wide straps.",
+    price: 158,
+    description:
+      "Utility-inspired backpack designed with folded closure and wide straps.",
     category: "bags",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.8, count: 203 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.8,
+    stock: 13,
   },
   {
     id: 106,
     title: "Product Name",
-    price: 68.0,
+    price: 68,
     description: "Signature product silhouette for the curated metta muse edit.",
     category: "featured",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.3, count: 57 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.3,
+    stock: 0,
   },
   {
     id: 107,
     title: "Woven Belt Bag",
-    price: 112.0,
+    price: 112,
     description: "Soft woven carry piece with warm tones and compact storage.",
     category: "bags",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.6, count: 149 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.6,
+    stock: 7,
   },
   {
     id: 108,
     title: "Canvas Pouch",
-    price: 32.0,
+    price: 32,
     description: "Small-format pouch with striped finish for everyday essentials.",
     category: "accessories",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.1, count: 42 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.1,
+    stock: 6,
   },
   {
     id: 109,
     title: "Travel Organizer",
-    price: 74.0,
+    price: 74,
     description: "Zipped organizer with clean structure and color-woven detailing.",
     category: "travel",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.5, count: 119 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.5,
+    stock: 11,
   },
   {
     id: 110,
     title: "Classic Sling",
-    price: 136.0,
-    description: "Crossbody sling with warm leather tones and soft woven texture.",
+    price: 136,
+    description:
+      "Crossbody sling with warm leather tones and soft woven texture.",
     category: "bags",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.7, count: 173 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.7,
+    stock: 10,
   },
   {
     id: 111,
     title: "Minimal Fold Backpack",
-    price: 149.0,
+    price: 149,
     description: "Minimal backpack with a bold folded top and lightweight build.",
     category: "bags",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.6, count: 165 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.6,
+    stock: 5,
   },
   {
     id: 112,
     title: "Product Name",
-    price: 82.0,
-    description: "Versatile featured product selected for the responsive listing layout.",
+    price: 82,
+    description:
+      "Versatile featured product selected for the responsive listing layout.",
     category: "featured",
-    image: FALLBACK_IMAGE,
-    rating: { rate: 4.2, count: 73 },
+    thumbnail: FALLBACK_IMAGE,
+    images: [FALLBACK_IMAGE],
+    rating: 4.2,
+    stock: 0,
   },
 ];
 
-function normalizeProduct(product: FakeStoreProduct, index: number): Product {
+function normalizeProduct(product: DummyJsonProduct, index: number): Product {
   return {
-    ...product,
+    id: product.id,
+    title: product.title,
+    description: product.description,
+    category: product.category,
+    image: product.thumbnail || product.images?.[0] || FALLBACK_IMAGE,
+    price: product.price,
+    rating: {
+      rate: product.rating,
+      count: Math.max(product.stock, 1) * 8,
+    },
     isNew: index < 2,
-    isOutOfStock: product.id % 7 === 0,
+    isOutOfStock: product.stock <= 0,
     alt: `${product.title} product image`,
   };
 }
 
 export async function getProducts(): Promise<Product[]> {
   try {
-    const response = await fetch(PRODUCTS_ENDPOINT, {
+    const response = await fetch(productsEndpoint, {
       cache: "no-store",
     });
 
     if (!response.ok) {
-      throw new Error(`FakeStore API request failed with status ${response.status}.`);
+      throw new Error(`DummyJSON API request failed with status ${response.status}.`);
     }
 
-    const products = (await response.json()) as FakeStoreProduct[];
+    const data = (await response.json()) as DummyJsonProductsResponse;
 
-    return products.map(normalizeProduct);
+    return data.products.map(normalizeProduct);
   } catch (error) {
     console.error("Falling back to local product data.", error);
 

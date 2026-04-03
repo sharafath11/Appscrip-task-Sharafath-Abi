@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Appscrip-task-Sharafath-Abi
 
-## Getting Started
+This project is a responsive Product Listing Page (PLP) built as part of the Appscrip frontend task.  
+The page is implemented in Next.js using the App Router, TypeScript, server-side rendering, and plain CSS.
 
-First, run the development server:
+Live URL: https://appscrip-task-sharafath-abi.vercel.app/plp
+
+## About the Task
+
+The goal was to recreate the provided ecommerce PLP design as closely as possible and keep the implementation clean, lightweight, and responsive across desktop, tablet, and mobile.
+
+Along with the UI, the task also asked for:
+
+- SSR
+- responsive behavior
+- SEO basics
+- minimal use of external packages
+- clean folder structure
+- reusable components
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Plain CSS
+- DummyJSON products API
+
+## What’s Included
+
+- Responsive PLP layout based on the design reference
+- Header, navigation, filters, sorting, product grid, newsletter, and footer
+- Server-rendered product fetching
+- Fallback product data if the API is unavailable
+- Page metadata and structured data for SEO
+- Accessible buttons, labels, and alt text
+
+## Project Structure
+
+```bash
+app/
+  layout.tsx
+  page.tsx
+  plp/page.tsx
+components/
+  Header.tsx
+  Navbar.tsx
+  FiltersSidebar.tsx
+  SortDropdown.tsx
+  ProductGrid.tsx
+  ProductCard.tsx
+  Footer.tsx
+  Newsletter.tsx
+  PLPClient.tsx
+lib/
+  api.ts
+  seo.ts
+  schema.ts
+styles/
+  globals.css
+  header.css
+  plp.css
+  filters.css
+  product.css
+  footer.css
+```
+
+## Data Source
+
+Product data is fetched from:
+
+https://dummyjson.com/products
+
+If the API is temporarily unavailable, the page falls back to a local product dataset so the UI still renders without crashing.
+
+## SEO Notes
+
+The task explicitly asked for SEO settings, so the project includes:
+
+- page title
+- meta description
+- semantic heading structure
+- product image alt text
+- structured data schema
+
+`lib/seo.ts` handles metadata for the page head, while `lib/schema.ts` generates JSON-LD structured data.
+
+## Running Locally
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Optional environment setup:
+
+```bash
+cp .env.example .env.local
+```
+
+You can change `NEXT_PUBLIC_SITE_URL` if you want metadata and schema URLs to
+point to a different deployed domain.
+
+You can also change `NEXT_PUBLIC_PRODUCTS_API_BASE` if you want to point the PLP
+to a different API base URL.
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000/plp
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If you run into stale dev cache issues, clear the `.next` folder and restart:
 
-## Learn More
+```bash
+rm -rf .next
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Production Build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
+- The homepage redirects to `/plp`
+- The page is rendered on demand for SSR
+- Styling is done entirely with plain CSS and media queries
+- The implementation avoids UI libraries and unnecessary packages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project is deployed here:
+
+https://appscrip-task-sharafath-abi.vercel.app/plp
