@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 const FILTER_SECTIONS = [
   {
     label: "IDEAL FOR",
@@ -21,6 +23,17 @@ type FiltersSidebarProps = {
 };
 
 export function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps) {
+  const [customizable, setCustomizable] = useState(false);
+  const [selectedIdealFor, setSelectedIdealFor] = useState<string[]>([]);
+
+  const toggleIdealFor = (option: string) => {
+    setSelectedIdealFor((current) =>
+      current.includes(option)
+        ? current.filter((item) => item !== option)
+        : [...current, option],
+    );
+  };
+
   return (
     <>
       <div
@@ -42,7 +55,12 @@ export function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps) {
         </div>
 
         <label className="filters_toggle">
-          <input type="checkbox" name="customizable" />
+          <input
+            type="checkbox"
+            name="customizable"
+            checked={customizable}
+            onChange={() => setCustomizable((current) => !current)}
+          />
           <span>CUSTOMIZABLE</span>
         </label>
 
@@ -56,13 +74,21 @@ export function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps) {
             {section.options ? (
               <div className="filters_content">
                 <p className="filters_all">All</p>
-                <button className="filters_unselect" type="button">
+                <button
+                  className="filters_unselect"
+                  type="button"
+                  onClick={() => setSelectedIdealFor([])}
+                >
                   Unselect all
                 </button>
                 <div className="filters_options">
                   {section.options.map((option) => (
                     <label key={option} className="filters_option">
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        checked={selectedIdealFor.includes(option)}
+                        onChange={() => toggleIdealFor(option)}
+                      />
                       <span>{option}</span>
                     </label>
                   ))}

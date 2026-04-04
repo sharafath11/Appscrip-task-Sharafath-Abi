@@ -10,12 +10,44 @@
 .filters_toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding-bottom: 28px;
+  gap: 16px;
+  padding-bottom: 26px;
   border-bottom: 1px solid var(--color-border);
   font-family: var(--font-heading), sans-serif;
-  letter-spacing: 0.04em;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+.filters_toggle input,
+.filters_option input {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid #bdbdbd;
+  background: #ffffff;
+}
+
+.filters_toggle input {
+  width: 22px;
+  height: 22px;
+}
+
+.filters_option input {
+  width: 18px;
+  height: 18px;
+}
+
+.filters_toggle input:checked,
+.filters_option input:checked {
+  border-color: #252020;
+  background:
+    linear-gradient(135deg, transparent 43%, #252020 43% 57%, transparent 57%),
+    linear-gradient(45deg, transparent 41%, #252020 41% 55%, transparent 55%),
+    #ffffff;
 }
 
 .filters_section {
@@ -24,32 +56,38 @@
 
 .filters_section summary {
   position: relative;
-  padding: 18px 18px 18px 0;
+  padding: 28px 34px 8px 0;
   font-family: var(--font-heading), sans-serif;
-  letter-spacing: 0.04em;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
 .filters_section summary::after {
-  content: "+";
+  content: "";
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--color-muted);
+  border-bottom: 2px solid var(--color-muted);
+  transform: translateY(-60%) rotate(45deg);
   color: var(--color-muted);
 }
 
 .filters_section[open] summary::after {
-  content: "−";
+  transform: translateY(-20%) rotate(-135deg);
 }
 
 .filters_content {
-  padding: 0 0 18px;
+  padding: 2px 0 24px;
 }
 
 .filters_all,
 .filters_option {
   margin: 0;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .filters_all {
@@ -57,24 +95,26 @@
 }
 
 .filters_unselect {
-  margin: 14px 0 18px;
+  margin: 22px 0 28px;
   padding: 0;
   border: 0;
   background: transparent;
-  color: #bfc8cd;
+  color: #252020;
+  font-size: 18px;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .filters_options {
   display: grid;
-  gap: 12px;
+  gap: 22px;
 }
 
 .filters_option {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
+  color: #3d393f;
 }
 
 @media (max-width: 1024px) {
@@ -131,5 +171,15 @@
     background: transparent;
     font-size: 34px;
     line-height: 1;
+  }
+
+  .filters_section summary {
+    padding-top: 24px;
+  }
+
+  .filters_all,
+  .filters_option,
+  .filters_unselect {
+    font-size: 16px;
   }
 }
